@@ -1,27 +1,61 @@
-# PokemonApp
+# Ngrx golden sample
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.1.
+A golden sample app to showcase how to work with Ngrx v12.4.0 (Current stable version) and use it to build application.
 
-## Development server
+## Installation
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Install Pokemon app with npm
 
-## Code scaffolding
+```bash
+  npm install
+  cd pokemon-app
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Run Locally
 
-## Build
+Go to the project directory
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```bash
+  cd pokemon-app
+```
 
-## Running unit tests
+Install dependencies
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```bash
+  npm install
+```
 
-## Running end-to-end tests
+Start the server
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```bash
+  npm run start
+```
 
-## Further help
+## Running Tests
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+To run tests, run the following command
+
+```bash
+  npm run test
+```
+
+## API Reference
+
+[Pokemon API Documentation](https://pokeapi.co/)
+
+#### Get all Pokemons
+
+```http
+  GET https://pokeapi.co/api/v2/pokemon
+```
+
+#### Get paginated Pokemon
+
+```http
+  GET /api/v2/pokemon?offset=0&limit=10
+```
+
+| Parameter | Type     | Description                                   |
+| :-------- | :------- | :-------------------------------------------- |
+| `offset`  | `number` | Defined from which index to get pokemons from |
+| `limit`   | `number` | Defines Number of pokemons per request        |
