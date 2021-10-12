@@ -1,4 +1,4 @@
-# Ngrx golden sample
+# NgRx golden sample
 
 A golden sample app to showcase how to work with Ngrx v12.4.0 (Current stable version) and use it to build application.
 
