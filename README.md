@@ -4,11 +4,10 @@ A golden sample app to showcase how to work with Ngrx v12.4.0 (Current stable ve
 
 ## Installation
 
-Install Pokemon app with npm
+Install app with npm
 
 ```bash
   npm install
-  cd pokemon-app
 ```
 
 ## Run Locally
@@ -16,7 +15,7 @@ Install Pokemon app with npm
 Go to the project directory
 
 ```bash
-  cd pokemon-app
+  cd ngrx-golden-sample-app
 ```
 
 Install dependencies
