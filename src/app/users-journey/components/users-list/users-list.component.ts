@@ -1,15 +1,30 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
+import { User } from '../../interfaces/users.interface';
 
 @Component({
   selector: 'app-users-list',
-  templateUrl: './users-list.component.html',
+  template: `
+    <ul>
+      <li *ngFor="let user of users">
+        <span (click)="onSelectUser(user)"
+          >{{ user.name }} -- {{ user.email }}</span
+        >
+      </li>
+    </ul>
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class UsersListComponent implements OnInit {
+export class UsersListComponent {
+  @Input() users!: User[];
+  @Output() selectedUser = new EventEmitter<User>();
 
-  constructor() { }
-
-  ngOnInit(): void {
+  onSelectUser(user: User) {
+    this.selectedUser.emit(user);
   }
-
 }
