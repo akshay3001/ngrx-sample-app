@@ -17,3 +17,8 @@ export const selectedUser = createAction(
   '[User Journey] Selected User Data',
   props<{ selectedUser: User }>()
 );
+
+export const addNewUser = createAction(
+  '[User Journey] Add New User',
+  props<{ user: User }>()
+);
