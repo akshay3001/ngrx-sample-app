@@ -6,7 +6,9 @@ import { User } from '../interfaces/users.interface';
 
 @Injectable()
 export class UsersHttpService {
-  users$ = this.http.get<User[]>(`${BASE_URL}/${USERS_ENDPOINT}`).pipe(delay(2000));
+  users$ = this.http
+    .get<User[]>(`${BASE_URL}/${USERS_ENDPOINT}`)
+    .pipe(delay(2000));
 
-  constructor(private readonly http: HttpClient) { }
+  constructor(private readonly http: HttpClient) {}
 }

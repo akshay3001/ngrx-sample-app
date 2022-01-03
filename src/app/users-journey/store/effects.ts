@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
@@ -18,7 +19,9 @@ export class UsersEffects {
       switchMap(() =>
         this.usersHttpService.users$.pipe(
           map((users) => loadUsersSuccess({ users })),
-          catchError((error) => of(loadUsersFailure({ error })))
+          catchError(({ message }: HttpErrorResponse) =>
+            of(loadUsersFailure({ error: message }))
+          )
         )
       )
     );

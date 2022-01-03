@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { User } from '../interfaces/users.interface';
 import { addNewUser, loadUsers, selectedUser } from './actions';
-import { selectError, selectIsLoading, selectSelectedUser, selectUsers } from './selectors';
+import { selectError, selectIsLoading, selectSelectedUser, selectTotalUsers, selectUsers } from './selectors';
 
 @Injectable()
 export class UsersStoreService {
@@ -10,6 +10,7 @@ export class UsersStoreService {
   error$ = this.store.select(selectError);
   selectedUser$ = this.store.select(selectSelectedUser);
   isLoading$ = this.store.select(selectIsLoading);
+  totalUsers$ = this.store.select(selectTotalUsers);
 
   constructor(private readonly store: Store) {}
 
@@ -22,6 +23,6 @@ export class UsersStoreService {
   }
 
   addNewUser(user: User) {
-    this.store.dispatch(addNewUser({user}))
+    this.store.dispatch(addNewUser({ user }));
   }
 }

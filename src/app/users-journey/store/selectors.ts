@@ -4,10 +4,16 @@ import { State, userFeatureKey } from './reducer';
 const selectUsersState = createFeatureSelector<State>(userFeatureKey);
 
 const selectUsersFromState = ({ users }: State) => users;
-export const selectUsers = createSelector(selectUsersState, selectUsersFromState);
+export const selectUsers = createSelector(
+  selectUsersState,
+  selectUsersFromState
+);
 
 const selectErrorFromState = ({ error }: State) => error;
-export const selectError = createSelector(selectUsersState, selectErrorFromState);
+export const selectError = createSelector(
+  selectUsersState,
+  selectErrorFromState
+);
 
 const selectedUserFromState = ({ selectedUser }: State) => selectedUser;
 export const selectSelectedUser = createSelector(
@@ -17,3 +23,6 @@ export const selectSelectedUser = createSelector(
 
 const isLoadingState = ({ isLoading }: State) => isLoading;
 export const selectIsLoading = createSelector(selectUsersState, isLoadingState);
+
+const totalUsers = ({ users }: State) => users.length;
+export const selectTotalUsers = createSelector(selectUsersState, totalUsers);
