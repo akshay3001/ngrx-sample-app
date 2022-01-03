@@ -7,7 +7,6 @@ import { UsersHttpService } from './services/users-http.service';
 import { TotalUsersComponent } from './components/total-users/total-users.component';
 import { UsersListComponent } from './components/users-list/users-list.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
-import { UsersStore } from './services/users.store';
 
 const materialModules = [MatProgressSpinnerModule];
 
@@ -19,6 +18,6 @@ const materialModules = [MatProgressSpinnerModule];
     UserDetailsComponent,
   ],
   imports: [CommonModule, UsersJourneyRoutingModule, ...materialModules],
-  providers: [UsersHttpService, UsersStore],
+  providers: [UsersHttpService],
 })
 export class UsersJourneyModule {}

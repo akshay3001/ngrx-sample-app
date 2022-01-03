@@ -1,16 +1,15 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { User } from '../../interfaces/users.interface';
 import { UsersStore } from '../../services/users.store';
 
 @Component({
   selector: 'app-users-list',
   template: `
-    <ng-container *ngIf="!error; else errorState">
-      <ng-container *ngIf="!loading; else loadingState">
-        <ng-container *ngIf="totalUsers! >= 1; else emptyState">
+    <ng-container *ngIf="!(error$ | async); else errorState">
+      <ng-container *ngIf="!(loading$ | async); else loadingState">
+        <ng-container *ngIf="(totalUsers$ | async)! >= 1; else emptyState">
           <ul>
-            <li *ngFor="let user of users">
+            <li *ngFor="let user of users$ | async">
               <h3 (click)="onSelectUser(user.id)">{{ user.name }}</h3>
             </li>
           </ul>
@@ -32,10 +31,10 @@ import { UsersStore } from '../../services/users.store';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UsersListComponent {
-  @Input() users!: User[] | null;
-  @Input() error!: string | null;
-  @Input() loading!: boolean | null;
-  @Input() totalUsers!: number | null;
+  error$ = this.usersStore.error$;
+  loading$ = this.usersStore.loading$;
+  totalUsers$ = this.usersStore.totalUsers$;
+  users$ = this.usersStore.users$;
 
   constructor(
     private readonly usersStore: UsersStore,

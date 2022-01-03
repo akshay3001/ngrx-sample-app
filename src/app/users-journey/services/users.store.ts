@@ -24,16 +24,16 @@ const initialState: UsersState = {
 
 @Injectable()
 export class UsersStore extends ComponentStore<UsersState> {
-  readonly users$ = this.select((state) => state.users);
-  readonly totalUsers$ = this.select((state) => state.users.length);
-  readonly loading$ = this.select((state) => state.loading);
   readonly error$ = this.select((state) => state.error);
+  readonly loading$ = this.select((state) => state.loading);
   readonly selectedUserId$ = this.select((state) => state.selectedUserId);
+  readonly users$ = this.select((state) => state.users);
   readonly selectedUserData$ = this.select(
     this.users$,
     this.selectedUserId$,
     (users, selectedUserId) => users.find((user) => user.id === selectedUserId)
   );
+  readonly totalUsers$ = this.select((state) => state.users.length);
 
   constructor(private readonly usersHttpService: UsersHttpService) {
     super(initialState);
@@ -59,19 +59,19 @@ export class UsersStore extends ComponentStore<UsersState> {
     })
   );
 
-  private addUsersToStore = this.updater(
-    (state: UsersState, users: User[]) => ({
-      ...state,
-      users,
-      loading: false,
-    })
-  );
-
   private addErrorToStore = this.updater(
     (state: UsersState, error: string) => ({
       ...state,
       users: [],
       error,
+      loading: false,
+    })
+  );
+
+  private addUsersToStore = this.updater(
+    (state: UsersState, users: User[]) => ({
+      ...state,
+      users,
       loading: false,
     })
   );
