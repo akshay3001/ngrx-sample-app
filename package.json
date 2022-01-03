@@ -1,5 +1,5 @@
 {
-  "name": "pokemon-app",
+  "name": "users-app",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -23,6 +23,7 @@
     "@angular/router": "~12.2.11",
     "@ngrx/effects": "^13.0.2",
     "@ngrx/store": "^12.4.0",
+    "@ngrx/store-devtools": "^13.0.2",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",
     "zone.js": "~0.11.4"

@@ -15,7 +15,7 @@ Install app with npm
 Go to the project directory
 
 ```bash
-  cd ngrx-golden-sample-app
+  cd ngrx-sample-app
 ```
 
 Install dependencies
@@ -40,21 +40,10 @@ To run tests, run the following command
 
 ## API Reference
 
-[Pokemon API Documentation](https://pokeapi.co/)
+[Jsonplaceholder API Documentation](https://jsonplaceholder.typicode.com/)
 
 #### Get all Pokemons
 
 ```http
-  GET https://pokeapi.co/api/v2/pokemon
+  GET https://jsonplaceholder.typicode.com/users
 ```
-
-#### Get paginated Pokemon
-
-```http
-  GET /api/v2/pokemon?offset=0&limit=10
-```
-
-| Parameter | Type     | Description                                   |
-| :-------- | :------- | :-------------------------------------------- |
-| `offset`  | `number` | Defined from which index to get pokemons from |
-| `limit`   | `number` | Defines Number of pokemons per request        |
