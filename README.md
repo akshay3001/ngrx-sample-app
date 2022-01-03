@@ -1,5 +1,7 @@
 # NgRx golden sample
 
+## Implemented using Component Store, overview can be found [here](https://ngrx.io/guide/component-store)
+
 A golden sample app to showcase how to work with Ngrx v12.4.0 (Current stable version) and use it to build application.
 
 ## Installation
