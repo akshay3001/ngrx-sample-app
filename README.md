@@ -42,7 +42,7 @@ To run tests, run the following command
 
 [Jsonplaceholder API Documentation](https://jsonplaceholder.typicode.com/)
 
-#### Get all Pokemons
+#### Get all Users
 
 ```http
   GET https://jsonplaceholder.typicode.com/users
