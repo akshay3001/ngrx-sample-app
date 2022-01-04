@@ -24,16 +24,34 @@ const initialState: UsersState = {
 
 @Injectable()
 export class UsersStore extends ComponentStore<UsersState> {
-  readonly error$ = this.select((state) => state.error);
-  readonly loading$ = this.select((state) => state.loading);
-  readonly selectedUserId$ = this.select((state) => state.selectedUserId);
-  readonly users$ = this.select((state) => state.users);
-  readonly selectedUserData$ = this.select(
+  private readonly error$ = this.select((state) => state.error);
+  private readonly loading$ = this.select((state) => state.loading);
+  private readonly selectedUserId$ = this.select(
+    (state) => state.selectedUserId
+  );
+  private readonly users$ = this.select((state) => state.users);
+  private readonly selectedUserData$ = this.select(
     this.users$,
     this.selectedUserId$,
     (users, selectedUserId) => users.find((user) => user.id === selectedUserId)
   );
-  readonly totalUsers$ = this.select((state) => state.users.length);
+  private readonly totalUsers$ = this.select((state) => state.users.length);
+  readonly vm$ = this.select(
+    this.users$,
+    this.totalUsers$,
+    this.error$,
+    this.loading$,
+    this.selectedUserId$,
+    this.selectedUserData$,
+    (users, totalUsers, error, loading, selectedUserId, selectedUserData) => ({
+      users,
+      totalUsers,
+      error,
+      loading,
+      selectedUserId,
+      selectedUserData,
+    })
+  );
 
   constructor(private readonly usersHttpService: UsersHttpService) {
     super(initialState);

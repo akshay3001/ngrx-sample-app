@@ -6,7 +6,7 @@ import { UsersStore } from '../../services/users.store';
   template: `
     <button routerLink="../list">Back</button>
     <hr />
-    <ng-container *ngIf="selectedUser$ | async as user">
+    <ng-container *ngIf="(vm$ | async)?.selectedUserData as user">
       <h2>Id: {{ user.name }}</h2>
       <h2>Name: {{ user.name }}</h2>
       <h2>Email: {{ user.email }}</h2>
@@ -14,7 +14,7 @@ import { UsersStore } from '../../services/users.store';
   `,
 })
 export class UserDetailsComponent {
-  selectedUser$ = this.usersStore.selectedUserData$;
+  vm$ = this.usersStore.vm$;
 
   constructor(private readonly usersStore: UsersStore) {}
 }

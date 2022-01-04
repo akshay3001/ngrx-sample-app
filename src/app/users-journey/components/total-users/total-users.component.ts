@@ -3,11 +3,11 @@ import { UsersStore } from '../../services/users.store';
 
 @Component({
   selector: 'app-total-users',
-  template: ` <h2>Total Users Count = {{ totalUsers$ | async }}</h2> `,
+  template: ` <h2>Total Users Count = {{ (vm$ | async)?.totalUsers }}</h2> `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TotalUsersComponent {
-  totalUsers$ = this.usersStore.totalUsers$;
+  vm$ = this.usersStore.vm$;
 
   constructor(private readonly usersStore: UsersStore) {}
 }
